@@ -25,6 +25,10 @@ if (!function_exists('storefront_credit')) {
     }
 }
 
+define('QLSTFT_PLUGIN_NAME', 'Storefront Footer');
+define('QLSTFT_PURCHASE_URL', 'https://quadlayers.com/?utm_source=qlstft_admin');
+define('QLSTFT_DEMO_URL', 'https://quadmenu.com/storefront?utm_source=qlstft_admin');
+
 if (!class_exists('Storefront_Footer')) {
 
     class Storefront_Footer
@@ -46,10 +50,11 @@ if (!class_exists('Storefront_Footer')) {
             global $storefront_footer;
 
             $title = get_bloginfo('title');
-            $url = get_bloginfo('siteurl');
+            $url = get_bloginfo('url');
+            $description = get_bloginfo('description');
 
             $defaults = array(
-                'footer_credit' => "© QuadLayers 2018 <br/> <a href='#' target='_blank' title='{$url}' rel='author'>{$title}</a>",
+                'footer_credit' => "© QuadLayers 2018 <br/> <a href='#' target='_blank' title='{$url}' rel='author'>{$title}</a> - {$description}",
             );
 
             $storefront_footer = $this->options = wp_parse_args((array) get_option('storefront_footer'), $defaults);
@@ -71,8 +76,39 @@ if (!class_exists('Storefront_Footer')) {
         public function create_admin_page()
         {
         ?>
-            <div class="wrap">
-                <h1>Storefront Footer</h1>
+            <div class="wrap about-wrap">
+
+                <h1><?php echo esc_html(QLSTFT_PLUGIN_NAME); ?></h1>
+
+                <p class="about-text"><?php printf(esc_html__('Thanks for using %s! We will do our best to offer you the best and improved experience with our products.', 'wp-whatsapp-chat'), QLSTFT_PLUGIN_NAME); ?></p>
+
+                <p class="about-text">
+                    <?php printf('<a href="%s" target="_blank">%s</a>', QLSTFT_PURCHASE_URL, esc_html__('About Us', 'wp-whatsapp-chat')); ?></a> |
+                    <?php printf('<a href="%s" target="_blank">%s</a>', QLSTFT_DEMO_URL, esc_html__('Demo', 'wp-whatsapp-chat')); ?></a>
+                </p>
+
+                <?php printf('<a href="%s" target="_blank"><div style="
+             background: #006bff url(%s) no-repeat;
+             background-position: top center;
+             background-size: 130px 130px;
+             color: #fff;
+             font-size: 14px;
+             text-align: center;
+             font-weight: 600;
+             margin: 5px 0 0;
+             padding-top: 120px;
+             height: 40px;
+             display: inline-block;
+             width: 140px;
+             " class="wp-badge">%s</div></a>', 'https://quadlayers.com/?utm_source=qlstft_admin', plugins_url('/assets/quadlayers.jpg', __FILE__), esc_html__('QuadLayers', 'wp-whatsapp-chat')); ?>
+
+            </div>
+            <style>
+                .about-wrap > form h2 {
+                    display: none;
+                }
+            </style>
+            <div class="wrap about-wrap">
                 <form method="post" action="options.php">
                     <?php
                     // This prints out all hidden setting fields
