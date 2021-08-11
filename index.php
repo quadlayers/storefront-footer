@@ -4,7 +4,7 @@
  * Plugin Name: Change Storefront Footer Copyright Text
  * Plugin URI: https://quadlayers.com
  * Description: Allows you to change the official Woocommerce Storefront theme footer copyright credit text.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: QuadLayers
  * Author URI: https://quadlayers.com 
  * License: GPLv3
@@ -28,6 +28,11 @@ if (!function_exists('storefront_credit')) {
 define('QLSTFT_PLUGIN_NAME', 'Storefront Footer');
 define('QLSTFT_PURCHASE_URL', 'https://quadlayers.com/?utm_source=qlstft_admin');
 define('QLSTFT_DEMO_URL', 'https://quadmenu.com/storefront?utm_source=qlstft_admin');
+define('QLSTFT_PLUGIN_FILE', __FILE__);
+define('QLSTFT_PLUGIN_DIR', __DIR__ . DIRECTORY_SEPARATOR);
+define('QLSTFT_PREFIX', 'qlstft');
+define('QLSTFT_DOMAIN', QLSTFT_PREFIX);
+
 
 if (!class_exists('Storefront_Footer')) {
 
@@ -41,6 +46,7 @@ if (!class_exists('Storefront_Footer')) {
             add_action('init', array($this, 'options'));
             add_action('admin_menu', array($this, 'add_plugin_page'));
             add_action('admin_init', array($this, 'page_init'));
+            add_action('admin_init', array($this, 'ql_init'));
             add_filter('plugin_action_links_' . plugin_basename(__FILE__), array($this, 'add_action_links'));
         }
 
@@ -68,8 +74,17 @@ if (!class_exists('Storefront_Footer')) {
             return $links;
         }
 
+        public function ql_init()
+        {
+            if (!class_exists('QL_Widget')) {
+                include_once(QLSTFT_PLUGIN_DIR . 'includes/quadlayers/widget.php');
+            }
+        }
+
         public function add_plugin_page()
         {
+
+
             add_options_page('Settings Admin', 'Storefront Footer', 'manage_options', 'storefront-footer', array($this, 'create_admin_page'));
         }
 
@@ -104,7 +119,7 @@ if (!class_exists('Storefront_Footer')) {
 
             </div>
             <style>
-                .about-wrap > form h2 {
+                .about-wrap>form h2 {
                     display: none;
                 }
             </style>
