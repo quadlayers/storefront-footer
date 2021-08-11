@@ -62,6 +62,7 @@ if (!class_exists('Storefront_Footer')) {
             $url = get_bloginfo('url');
             $description = get_bloginfo('description');
 
+            
             $defaults = array(
                 'footer_credit' => "© QuadLayers 2018 <br/> <a href='#' target='_blank' title='{$url}' rel='author'>{$title}</a> - {$description}",
             );
