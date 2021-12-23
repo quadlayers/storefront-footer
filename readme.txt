@@ -6,7 +6,7 @@ Requires at least: 4.8
 Tested up to: 5.8
 Stable tag: 1.1.2
 WC requires at least: 3.1.0
-WC tested up to: 5.9
+WC tested up to: 6.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,7 +29,7 @@ Works only with [Storefront Theme](https://wordpress.org/themes/storefront).
 == Changelog ==
 
 = 1.1.2 =
-* WordPress compatibility
+* Woocommerce compatibility
 
 = 1.1.1 =
 * WordPress compatibility
