@@ -4,14 +4,14 @@
   * Plugin Name: Change Storefront Footer Copyright Text
   * Plugin URI:  https://quadlayers.com
   * Description: Allows you to change the official Woocommerce Storefront theme footer copyright credit text.
-  * Version:     1.1.5
+  * Version:     1.1.6
   * Author:      QuadLayers
   * Author URI:  https://quadlayers.com
   * Text Domain: storefront-footer
   * License: GPLv3
   * License URI: https://www.gnu.org/licenses/gpl-3.0.html
   * WC requires at least: 3.1.0
-  * WC tested up to: 6.4
+  * WC tested up to: 6.6
   */
 
 if ( ! function_exists( 'storefront_credit' ) ) {
@@ -144,8 +144,8 @@ if ( ! class_exists( 'Storefront_Footer' ) ) {
 			/*
 			 *
 			 * add_settings_field(
-			  'title', 'Title', array($this, 'title_callback'), 'storefront-footer', 'setting_section_id'
-			  ); */
+			'title', 'Title', array($this, 'title_callback'), 'storefront-footer', 'setting_section_id'
+			); */
 		}
 
 		public function sanitize( $input ) {
@@ -158,7 +158,7 @@ if ( ! class_exists( 'Storefront_Footer' ) ) {
 			/*
 			 *
 			 * if (isset($input['title']))
-			  $new_input['title'] = sanitize_text_field($input['title']); */
+			$new_input['title'] = sanitize_text_field($input['title']); */
 
 			return $new_input;
 		}
@@ -172,7 +172,7 @@ if ( ! class_exists( 'Storefront_Footer' ) ) {
 				$this->options['footer_credit'],
 				'footer_credit',
 				array(
-					'media_buttons' => false,
+					'media_buttons' => true,
 					'textarea_rows' => 5,
 					'textarea_name' => 'storefront_footer[footer_credit]',
 				)
@@ -182,16 +182,16 @@ if ( ! class_exists( 'Storefront_Footer' ) ) {
 		/*
 		 *
 		 * public function footer_credit_callback() {
-		  printf(
-		  '<input type="text" id="footer_credit" name="storefront_footer[footer_credit]" value="%s" />', isset($this->options['footer_credit']) ? esc_attr($this->options['footer_credit']) : ''
-		  );
-		  }
+		printf(
+		'<input type="text" id="footer_credit" name="storefront_footer[footer_credit]" value="%s" />', isset($this->options['footer_credit']) ? esc_attr($this->options['footer_credit']) : ''
+		);
+		}
 
-		  public function title_callback() {
-		  printf(
-		  '<input type="text" id="title" name="storefront_footer[title]" value="%s" />', isset($this->options['title']) ? esc_attr($this->options['title']) : ''
-		  );
-		  } */
+		public function title_callback() {
+		printf(
+		'<input type="text" id="title" name="storefront_footer[title]" value="%s" />', isset($this->options['title']) ? esc_attr($this->options['title']) : ''
+		);
+		} */
 	}
 
 	new Storefront_Footer();
