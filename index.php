@@ -4,14 +4,14 @@
   * Plugin Name: Change Storefront Footer Copyright Text
   * Plugin URI:  https://quadlayers.com
   * Description: Allows you to change the official Woocommerce Storefront theme footer copyright credit text.
-  * Version:     1.1.6
+  * Version:     1.1.7
   * Author:      QuadLayers
   * Author URI:  https://quadlayers.com
   * Text Domain: storefront-footer
   * License: GPLv3
   * License URI: https://www.gnu.org/licenses/gpl-3.0.html
   * WC requires at least: 3.1.0
-  * WC tested up to: 6.6
+  * WC tested up to: 6.8
   */
 
 if ( ! function_exists( 'storefront_credit' ) ) {
@@ -27,12 +27,14 @@ if ( ! function_exists( 'storefront_credit' ) ) {
 }
 
 define( 'QLSTFT_PLUGIN_NAME', 'Storefront Footer' );
-define( 'QLSTFT_PURCHASE_URL', 'https://quadlayers.com/?utm_source=qlstft_admin' );
+define( 'QLSTFT_PURCHASE_URL', 'https://quadlayers.com/portfolio/woocommerce-checkout-manager/?utm_source=qlstft_admin' );
 define( 'QLSTFT_DEMO_URL', 'https://quadmenu.com/storefront?utm_source=qlstft_admin' );
 define( 'QLSTFT_PLUGIN_FILE', __FILE__ );
 define( 'QLSTFT_PLUGIN_DIR', __DIR__ . DIRECTORY_SEPARATOR );
 define( 'QLSTFT_PREFIX', 'qlstft' );
 define( 'QLSTFT_DOMAIN', QLSTFT_PREFIX );
+define( 'QLSTFT_REVIEW_URL', 'https://wordpress.org/support/plugin/woocommerce-checkout-manager/reviews/?filter=5#new-post' );
+define( 'QLSTFT_SUPPORT_URL', 'https://quadlayers.com/account/support/?utm_source=wooccm_admin' );
 
 
 if ( ! class_exists( 'Storefront_Footer' ) ) {
@@ -71,9 +73,8 @@ if ( ! class_exists( 'Storefront_Footer' ) ) {
 		}
 
 		public function ql_init() {
-			if ( ! class_exists( 'QL_Widget' ) ) {
-				include_once QLSTFT_PLUGIN_DIR . 'includes/quadlayers/widget.php';
-			}
+			include_once QLSTFT_PLUGIN_DIR . 'includes/quadlayers/widget.php';
+			include_once QLSTFT_PLUGIN_DIR . 'includes/quadlayers/notices.php';
 		}
 
 		public function add_plugin_page() {
