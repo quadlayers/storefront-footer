@@ -4,7 +4,7 @@ Donate link: https://quadlayers.com/
 Tags: storefront footer, storefront credit, storefront footer text, storefront footer copyright, storefront
 Requires at least: 4.8
 Tested up to: 6.0
-Stable tag: 1.1.8
+Stable tag: 1.1.9
 WC requires at least: 3.1.0
 WC tested up to: 6.8
 License: GPLv3
@@ -27,6 +27,9 @@ Works only with [Storefront Theme](https://wordpress.org/themes/storefront).
 1. Click "Install"
 
 == Changelog ==
+
+= 1.1.9 =
+* Woocommerce compatibility
 
 = 1.1.8 =
 * Woocommerce compatibility
