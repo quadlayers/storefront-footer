@@ -7,17 +7,10 @@ class QLSTFT_Notices {
 	public function __construct() {
 		add_action( 'wp_ajax_qlstft_dismiss_notice', array( $this, 'ajax_dismiss_notice' ) );
 		add_action( 'admin_notices', array( $this, 'add_notices' ) );
-		add_filter( 'plugin_action_links_' . plugin_basename( QLSTFT_PLUGIN_FILE ), array( $this, 'add_action_links' ) );
+		register_activation_hook( QLSTFT_PLUGIN_FILE, array( $this, 'add_transient' ) );
 	}
 
-	public static function instance() {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self();
-		}
-		return self::$_instance;
-	}
-
-	public function ajax_dismiss_notice() {
+	function ajax_dismiss_notice() {
 		if ( check_admin_referer( 'qlstft_dismiss_notice', 'nonce' ) && isset( $_REQUEST['notice_id'] ) ) {
 
 			$notice_id = sanitize_key( $_REQUEST['notice_id'] );
@@ -31,7 +24,11 @@ class QLSTFT_Notices {
 		wp_die();
 	}
 
-	public function add_notices() {
+	function add_transient() {
+		set_transient( 'qlstft-notice-delay', true, MONTH_IN_SECONDS );
+	}
+
+	function add_notices() {
 
 		$transient = get_transient( 'qlstft-notice-delay' );
 
@@ -64,8 +61,10 @@ class QLSTFT_Notices {
 		</script>
 		<?php
 
+		$plugin_slug = QLSTFT_PREMIUM_SELL_SLUG;
+
 		$user_rating     = ! get_user_meta( get_current_user_id(), 'qlstft-user-rating', true );
-		$user_premium    = ! get_user_meta( get_current_user_id(), 'qlstft-user-premium', true ) && ! $this->is_installed( 'storefront-footer-pro/storefront-footer-pro.php' );
+		$user_premium    = ! get_user_meta( get_current_user_id(), 'qlstft-user-premium', true ) && ! $this->is_installed( "{$plugin_slug}/{$plugin_slug}.php" );
 		$user_cross_sell = ! get_user_meta( get_current_user_id(), 'qlstft-user-cross-sell', true );
 
 		if ( $user_rating ) {
@@ -108,14 +107,14 @@ class QLSTFT_Notices {
 						<?php
 						printf(
 							esc_html__( 'Today we want to make you a special gift. Using this coupon before the next 48 hours you can get a 20 percent discount on the premium version of the %s plugin.', 'storefront-footer' ),
-							'WooCommerce Checkout Manager'
+							esc_html( QLSTFT_PREMIUM_SELL_NAME )
 						)
 						?>
 						</p>
-						<a href="<?php echo esc_url( QLSTFT_PURCHASE_URL ); ?>" class="button-primary" target="_blank">
+						<a href="<?php echo esc_url( QLSTFT_PREMIUM_SELL_URL ); ?>" class="button-primary" target="_blank">
 							<?php esc_html_e( 'More info', 'storefront-footer' ); ?>
 						</a>
-						<input style="width:95px" type="text" value="ADMINPANEL20%"/>
+						<input style="width:130px" type="text" value="ADMINPANEL20%"/>
 					</div>
 				</div>
 			</div>
@@ -131,7 +130,7 @@ class QLSTFT_Notices {
 				return;
 			}
 
-			list($title, $description, $link, $action, $action_link) = $cross_sell;
+			list($action, $action_link) = $cross_sell;
 
 			?>
 			<div class="qlstft-notice notice notice-info is-dismissible" data-notice_id="qlstft-user-cross-sell">
@@ -141,14 +140,14 @@ class QLSTFT_Notices {
 					</div>
 					<div class="notice-content" style="margin-left: 15px;">
 						<p>
-						<?php printf( esc_html__( 'Hello! We want to invite you to try our %s plugin!', 'storefront-footer' ), $title ); ?>
+						<?php printf( esc_html__( 'Hello! We want to invite you to try our %s plugin!', 'storefront-footer' ), esc_html( QLSTFT_CROSS_INSTALL_NAME ) ); ?>
 							<br/>
-						<?php echo esc_html( $description ); ?>
+						<?php echo esc_html( QLSTFT_CROSS_INSTALL_DESCRIPTION ); ?>
 						</p>
 						<a href="<?php echo esc_url( $action_link ); ?>" class="button-primary">
 						<?php echo esc_html( $action ); ?>
 						</a>
-						<a href="<?php echo esc_url( $link ); ?>" class="button-secondary" target="_blank">
+						<a href="<?php echo esc_url( QLSTFT_CROSS_INSTALL_URL ); ?>" class="button-secondary" target="_blank">
 						<?php esc_html_e( 'More info', 'storefront-footer' ); ?>
 						</a>
 					</div>
@@ -162,17 +161,13 @@ class QLSTFT_Notices {
 
 	function get_cross_sell() {
 
-		$title       = 'Direct Checkout';
-		$description = esc_html__( 'Direct Checkout for WooCommerce allows you to reduce the steps in the checkout process by skipping the shopping cart page. This can encourage buyers to shop more and quickly. You will increase your sales reducing cart abandonment.', 'storefront-footer' );
-		$link        = 'https://quadlayers.com/portfolio/woocommerce-direct-checkout/?utm_source=qlstft_admin';
-
 		$screen = get_current_screen();
 
 		if ( isset( $screen->parent_file ) && 'plugins.php' === $screen->parent_file && 'update' === $screen->id ) {
 			return array();
 		}
 
-		$plugin_slug = 'woocommerce-direct-checkout';
+		$plugin_slug = QLSTFT_CROSS_INSTALL_SLUG;
 
 		$plugin_file = "{$plugin_slug}/{$plugin_slug}.php";
 
@@ -187,9 +182,6 @@ class QLSTFT_Notices {
 			}
 
 			return array(
-				$title,
-				$description,
-				$link,
 				esc_html__( 'Activate', 'storefront-footer' ),
 				wp_nonce_url( "plugins.php?action=activate&amp;plugin={$plugin_file}&amp;plugin_status=all&amp;paged=1", "activate-plugin_{$plugin_file}" ),
 			);
@@ -201,9 +193,6 @@ class QLSTFT_Notices {
 		}
 
 		return array(
-			$title,
-			$description,
-			$link,
 			esc_html__( 'Install', 'storefront-footer' ),
 			wp_nonce_url( self_admin_url( "update.php?action=install-plugin&plugin={$plugin_slug}" ), "install-plugin_{$plugin_slug}" ),
 		);
@@ -217,12 +206,12 @@ class QLSTFT_Notices {
 		return isset( $installed_plugins[ $path ] );
 	}
 
-	function add_action_links( $links ) {
-		$links[] = '<a target="_blank" href="' . QLSTFT_PURCHASE_URL . '">' . esc_html__( 'Premium', 'storefront-footer' ) . '</a>';
-		$links[] = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=' . sanitize_title( QLSTFT_PREFIX ) ) . '">' . esc_html__( 'Settings', 'storefront-footer' ) . '</a>';
-		return $links;
+	public static function instance() {
+		if ( is_null( self::$_instance ) ) {
+			self::$_instance = new self();
+		}
+		return self::$_instance;
 	}
-
 }
 
 QLSTFT_Notices::instance();

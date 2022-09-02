@@ -4,7 +4,7 @@
   * Plugin Name: Change Storefront Footer Copyright Text
   * Plugin URI:  https://quadlayers.com
   * Description: Allows you to change the official Woocommerce Storefront theme footer copyright credit text.
-  * Version:     1.1.7
+  * Version:     1.1.8
   * Author:      QuadLayers
   * Author URI:  https://quadlayers.com
   * Text Domain: storefront-footer
@@ -15,8 +15,8 @@
   */
 
 if ( ! function_exists( 'storefront_credit' ) ) {
-
-	function storefront_credit() {      ?>
+	function storefront_credit() {
+		?>
 		<div class="site-info">
 			<?php
 			echo wp_kses_post( $GLOBALS['storefront_footer']['footer_credit'] );
@@ -31,10 +31,20 @@ define( 'QLSTFT_PURCHASE_URL', 'https://quadlayers.com/portfolio/woocommerce-che
 define( 'QLSTFT_DEMO_URL', 'https://quadmenu.com/storefront?utm_source=qlstft_admin' );
 define( 'QLSTFT_PLUGIN_FILE', __FILE__ );
 define( 'QLSTFT_PLUGIN_DIR', __DIR__ . DIRECTORY_SEPARATOR );
+define( 'QLSTFT_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'QLSTFT_PREFIX', 'qlstft' );
 define( 'QLSTFT_DOMAIN', QLSTFT_PREFIX );
 define( 'QLSTFT_REVIEW_URL', 'https://wordpress.org/support/plugin/woocommerce-checkout-manager/reviews/?filter=5#new-post' );
 define( 'QLSTFT_SUPPORT_URL', 'https://quadlayers.com/account/support/?utm_source=wooccm_admin' );
+
+define( 'QLSTFT_PREMIUM_SELL_SLUG', 'woocommerce-direct-checkout-pro' );
+define( 'QLSTFT_PREMIUM_SELL_NAME', 'WooCommerce Direct Checkout' );
+define( 'QLSTFT_PREMIUM_SELL_URL', 'https://quadlayers.com/portfolio/woocommerce-direct-checkout/?utm_source=qlstft_admin' );
+
+define( 'QLSTFT_CROSS_INSTALL_SLUG', 'woocommerce-checkout-manager' );
+define( 'QLSTFT_CROSS_INSTALL_NAME', 'Checkout Manager' );
+define( 'QLSTFT_CROSS_INSTALL_DESCRIPTION', esc_html__( 'Checkout Field Manager( Checkout Manager ) for WooCommerce allows you to add custom fields to the checkout page, related to billing, Shipping or Additional fields sections.', 'storefront-footer' ) );
+define( 'QLSTFT_CROSS_INSTALL_URL', 'https:// quadlayers.com/portfolio/woocommerce-checkout-manager/?utm_source=qlstft_admin' );
 
 
 if ( ! class_exists( 'Storefront_Footer' ) ) {
@@ -49,7 +59,6 @@ if ( ! class_exists( 'Storefront_Footer' ) ) {
 			add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
 			add_action( 'admin_init', array( $this, 'page_init' ) );
 			add_action( 'admin_init', array( $this, 'ql_init' ) );
-			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_action_links' ) );
 		}
 
 		public function options() {
@@ -66,15 +75,10 @@ if ( ! class_exists( 'Storefront_Footer' ) ) {
 			$storefront_footer = $this->options = wp_parse_args( (array) get_option( 'storefront_footer' ), $defaults );
 		}
 
-		function add_action_links( $links ) {
-			$links[] = '<a href="' . admin_url( 'options-general.php?page=storefront-footer' ) . '">' . esc_html__( 'Settings', 'quadlayers' ) . '</a>';
-
-			return $links;
-		}
-
 		public function ql_init() {
 			include_once QLSTFT_PLUGIN_DIR . 'includes/quadlayers/widget.php';
 			include_once QLSTFT_PLUGIN_DIR . 'includes/quadlayers/notices.php';
+			include_once QLSTFT_PLUGIN_DIR . 'includes/quadlayers/links.php';
 		}
 
 		public function add_plugin_page() {
