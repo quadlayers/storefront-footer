@@ -10,6 +10,7 @@ class QLSTFT_Admin_Links {
 
 	public function add_action_links( $links ) {
 		$links[] = '<a target="_blank" href="' . QLSTFT_PURCHASE_URL . '">' . esc_html__( 'Premium', 'storefront-footer' ) . '</a>';
+		$links[] = '<a href="' . admin_url( 'options-general.php?page=storefront-footer' ) . '">' . esc_html__( 'Settings', 'storefront-footer' ) . '</a>';
 		return $links;
 	}
 
