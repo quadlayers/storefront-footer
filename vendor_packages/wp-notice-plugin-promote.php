@@ -1,9 +1,6 @@
 <?php
 
-error_log('test1');
-
 if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
-	error_log('test12');
 	/**
 	 *  Promote constants
 	 */

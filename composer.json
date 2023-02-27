@@ -33,7 +33,7 @@
 			"lib/"
 		],
 		"files":[
-			"lib/compatibility/functions.php"
+			"compatibility/functions.php"
 		]
 	},
 	"autoload-dev": {
