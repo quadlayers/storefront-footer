@@ -5,7 +5,7 @@
  * Plugin Name:             Change Storefront Footer Copyright Text
  * Plugin URI:              https://quadlayers.com
  * Description:             Allows you to change the official Woocommerce Storefront theme footer copyright credit text.
- * Version:                 2.0.1
+ * Version:                 2.0.2
  * Text Domain:             storefront-footer
  * Author:                  QuadLayers
  * Author URI:              https://quadlayers.com
@@ -40,7 +40,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/vendor_packages/wp-i18n-map.php';
 require_once __DIR__ . '/vendor_packages/wp-dashboard-widget-news.php';
 require_once __DIR__ . '/vendor_packages/wp-plugin-table-links.php';
-require_once __DIR__ . '/vendor_packages/wp-notice-plugin-required.php';
 require_once __DIR__ . '/vendor_packages/wp-notice-plugin-promote.php';
 /**
  * Load plugin classes
