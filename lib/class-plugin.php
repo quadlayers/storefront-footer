@@ -66,7 +66,7 @@ final class Plugin {
 		 width: 140px;
 		 " class="wp-badge">%s</div></a>',
 				'https://quadlayers.com/?utm_source=qlstft_admin',
-				plugins_url( '/assets/quadlayers.jpg', __FILE__ ),
+				plugins_url( '/assets/quadlayers.jpg', QLSTFT_PLUGIN_FILE ),
 				esc_html__( 'QuadLayers', 'storefront-footer' )
 			);
 			?>
