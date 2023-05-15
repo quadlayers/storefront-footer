@@ -49,21 +49,14 @@ jobs:
 
       - name: Validate directories
         run: |
-          if [ ! -d "build" ]; then
-            echo "Build directory does not exist."
-            exit 1
-          fi
-
-      - name: Validate directories
-        run: |
           if [ ! -d "vendor" ]; then
             echo "Vendor directory does not exist."
             exit 1
           fi
 
-      - name: Check storefront-footer-test.php file
+      - name: Check storefront-footer.php file
         run: |
-          if [ ! -f "./storefront-footer-test.php" ]; then
+          if [ ! -f "./storefront-footer.php" ]; then
             echo "storefront-footer.php file does not exist."
             exit 1
           fi
