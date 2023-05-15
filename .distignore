@@ -1,0 +1,16 @@
+# Files
+#https://github.com/10up/action-wordpress-plugin-deploy/
+#https://github.com/marketplace/actions/wordpress-plugin-svn-deploy
+
+.DS_Store
+*.zip
+
+# Lock
+/.developer
+/.distignore
+
+# Git Files
+/.git
+/.gitattributes
+/.github
+/.gitignore
