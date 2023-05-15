@@ -60,6 +60,13 @@ jobs:
             echo "Vendor directory does not exist."
             exit 1
           fi
+
+      - name: Check storefront-footer-test.php file
+        run: |
+          if [ ! -f "./storefront-footer-test.php" ]; then
+            echo "storefront-footer.php file does not exist."
+            exit 1
+          fi
         
       - name: WordPress Plugin Deploy
         uses: nk-o/action-wordpress-plugin-deploy@master
