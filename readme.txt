@@ -4,12 +4,12 @@ Donate link: https://quadlayers.com/
 Tags: storefront footer, storefront credit, storefront footer text, storefront footer copyright, storefront
 Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 6.2
-Stable tag: 2.0.6
+Tested up to: 6.3
+Stable tag: 2.0.7
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 WC requires at least: 4.7.0
-WC tested up to: 7.9
+WC tested up to: 8.0
 
 Change the footer credit text for Storefront theme.
 
@@ -17,7 +17,7 @@ Change the footer credit text for Storefront theme.
 
 [Demo](http://quadmenu.com/storefront/) [Github](https://github.com/quadlayers/storefront-footer/)
 
-This plugin allows you to easily edit and change the footer credit and copyright text in the Woocommerce Storefront theme through the wordpress admin panel.
+This plugin allows you to easily edit and change the footer credit and copyright text in the WooCommerce Storefront theme through the wordpress admin panel.
 
 Works only with [Storefront Theme](https://wordpress.org/themes/storefront).
 
@@ -29,17 +29,21 @@ Works only with [Storefront Theme](https://wordpress.org/themes/storefront).
 
 == Changelog ==
 
+= 2.0.7 =
+* WooCommerce compatibility
+* WordPress compatibility
+
 = 2.0.6 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 2.0.5 =
 * PHP errors
 
 = 2.0.4 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 2.0.3 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 2.0.2 =
 * PHP errors
@@ -51,46 +55,46 @@ Works only with [Storefront Theme](https://wordpress.org/themes/storefront).
 * Refactor
 
 = 1.2.6 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 1.2.5 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 1.2.4 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 1.2.3 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 1.2.2 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 1.2.0 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 1.1.9 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 1.1.8 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 1.1.7 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 1.1.6 =
 * Media upload in wp editor
 
 = 1.1.5 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 1.1.4 =
 * WordPress compatibility
 
 = 1.1.3 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 1.1.2 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 1.1.1 =
 * WordPress compatibility
@@ -117,10 +121,10 @@ Works only with [Storefront Theme](https://wordpress.org/themes/storefront).
 * WordPress compatibility
 
 = 1.0.3 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 1.0.2 =
-* Woocommerce compatibility
+* WooCommerce compatibility
 
 = 1.0.1 =
 * siteurl and title default
