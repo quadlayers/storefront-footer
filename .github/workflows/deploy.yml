@@ -44,8 +44,15 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pnpm install --force
+          pnpm run setup
           pnpm run build
+
+      - name: Validate directories
+        run: |
+          if [ ! -d "vendor" ]; then
+            echo "Vendor directory does not exist."
+            exit 1
+          fi
 
       - name: Check storefront-footer.php file
         run: |
@@ -59,4 +66,4 @@ jobs:
         env:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SLUG: test
+          SLUG: storefront-footer
