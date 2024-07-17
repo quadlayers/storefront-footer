@@ -4,12 +4,12 @@ Donate link: https://quadlayers.com/
 Tags: storefront footer, storefront credit, storefront footer text, storefront footer copyright, storefront
 Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 6.5
-Stable tag: 2.1.8
+Tested up to: 6.6
+Stable tag: 2.1.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 WC requires at least: 4.0
-WC tested up to: 9.0
+WC tested up to: 9.1
 
 Change the footer credit text for Storefront theme.
 
@@ -28,6 +28,9 @@ Works only with [Storefront Theme](https://wordpress.org/themes/storefront).
 1. Click "Install"
 
 == Changelog ==
+
+= 2.1.9 =
+* WooCommerce compatibility
 
 = 2.1.8 =
 * WooCommerce compatibility
