@@ -11,11 +11,14 @@ final class Plugin {
 		/**
 		 * Load plugin textdomain.
 		 */
-		load_plugin_textdomain( 'storefront-footer', false, QLSTFT_PLUGIN_DIR . '/languages/' );
-
+		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_action( 'init', array( $this, 'options' ) );
 		add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
 		add_action( 'admin_init', array( $this, 'page_init' ) );
+	}
+
+	public function load_textdomain() {
+		load_plugin_textdomain( 'storefront-footer', false, QLSTFT_PLUGIN_DIR . '/languages/' );
 	}
 
 	public function options() {
