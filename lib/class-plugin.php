@@ -48,8 +48,8 @@ final class Plugin {
 			<p class="about-text"><?php printf( esc_html__( 'Thanks for using %s! We will do our best to offer you the best and improved experience with our products.', 'storefront-footer' ), esc_html( QLSTFT_PLUGIN_NAME ) ); ?></p>
 
 			<p class="about-text">
-				<?php printf( '<a href="%s" target="_blank">%s</a>', 'https://quadlayers.com/?utm_source=qlstft_admin', esc_html__( 'About Us', 'storefront-footer' ) ); ?></a> |
-				<?php printf( '<a href="%s" target="_blank">%s</a>', 'https://quadlayers.com/shop/?utm_source=qlstft_admin', esc_html__( 'Products', 'storefront-footer' ) ); ?></a>
+				<?php printf( '<a href="%s" target="_blank">%s</a>', 'https://quadlayers.com/?utm_source=qlstft_plugin&utm_medium=admin_header&utm_campaign=cross_sell&utm_content=about_us_link', esc_html__( 'About Us', 'storefront-footer' ) ); ?></a> |
+				<?php printf( '<a href="%s" target="_blank">%s</a>', 'https://quadlayers.com/products/?utm_source=qlstft_plugin&utm_medium=admin_header&utm_campaign=cross_sell&utm_content=products_link', esc_html__( 'Products', 'storefront-footer' ) ); ?></a>
 			</p>
 
 			<?php
@@ -68,7 +68,7 @@ final class Plugin {
 		 display: inline-block;
 		 width: 140px;
 		 " class="wp-badge">%s</div></a>',
-				'https://quadlayers.com/?utm_source=qlstft_admin',
+				'https://quadlayers.com/?utm_source=qlstft_plugin&utm_medium=admin_header&utm_campaign=branding&utm_content=header_logo',
 				plugins_url( '/assets/quadlayers.jpg', QLSTFT_PLUGIN_FILE ),
 				esc_html__( 'QuadLayers', 'storefront-footer' )
 			);

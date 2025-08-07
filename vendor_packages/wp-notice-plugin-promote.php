@@ -15,14 +15,15 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 		 */
 		define( 'QLSTFT_PROMOTE_PREMIUM_SELL_SLUG', 'woocommerce-direct-checkout' );
 		define( 'QLSTFT_PROMOTE_PREMIUM_SELL_NAME', 'WooCommerce Direct Checkout PRO' );
-		define( 'QLSTFT_PROMOTE_PREMIUM_SELL_URL', QLSTFT_PREMIUM_SELL_URL );
+		define( 'QLSTFT_PROMOTE_PREMIUM_INSTALL_URL', 'https://quadlayers.com/products/woocommerce-direct-checkout/?utm_source=qlstft_plugin&utm_medium=dashboard_notice&utm_campaign=cross_sell&utm_content=premium_install_button' );
+		define( 'QLSTFT_PROMOTE_PREMIUM_SELL_URL', 'https://quadlayers.com/products/woocommerce-direct-checkout/?utm_source=qlstft_plugin&utm_medium=dashboard_notice&utm_campaign=cross_sell&utm_content=premium_link' );
 		/**
 		 * Notice cross sell 1
 		 */
 		define( 'QLSTFT_PROMOTE_CROSS_INSTALL_1_SLUG', 'woocommerce-checkout-manager' );
 		define( 'QLSTFT_PROMOTE_CROSS_INSTALL_1_NAME', 'WooCommerce Checkout Manager' );
 		define( 'QLSTFT_PROMOTE_CROSS_INSTALL_1_DESCRIPTION', esc_html__( 'This plugin allows you to add custom fields to the checkout page, related to billing, shipping or additional fields sections.', 'storefront-footer' ) );
-		define( 'QLSTFT_PROMOTE_CROSS_INSTALL_1_URL', 'https://quadlayers.com/products/woocommerce-checkout-manager/?utm_source=qlstft_admin' );
+		define( 'QLSTFT_PROMOTE_CROSS_INSTALL_1_URL', 'https://quadlayers.com/products/woocommerce-checkout-manager/?utm_source=qlstft_plugin&utm_medium=dashboard_notice&utm_campaign=cross_sell&utm_content=checkout_manager_link' );
 		define( 'QLSTFT_PROMOTE_CROSS_INSTALL_1_LOGO_SRC', plugins_url( '/assets/backend/img/woocommerce-direct-checkout.jpg', QLSTFT_PLUGIN_FILE ) );
 		/**
 		 * Notice cross sell 2
@@ -30,7 +31,7 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 		define( 'QLSTFT_PROMOTE_CROSS_INSTALL_2_SLUG', 'perfect-woocommerce-brands' );
 		define( 'QLSTFT_PROMOTE_CROSS_INSTALL_2_NAME', 'Perfect WooCommerce Brands' );
 		define( 'QLSTFT_PROMOTE_CROSS_INSTALL_2_DESCRIPTION', esc_html__( 'Perfect WooCommerce Brands the perfect tool to improve customer experience on your site. It allows you to highlight product brands and organize them in lists, dropdowns, thumbnails, and as a widget.', 'storefront-footer' ) );
-		define( 'QLSTFT_PROMOTE_CROSS_INSTALL_2_URL', 'https://quadlayers.com/products/perfect-woocommerce-brands/?utm_source=qlstft_admin' );
+		define( 'QLSTFT_PROMOTE_CROSS_INSTALL_2_URL', 'https://quadlayers.com/products/perfect-woocommerce-brands/?utm_source=qlstft_plugin&utm_medium=dashboard_notice&utm_campaign=cross_sell&utm_content=perfect_brands_link' );
 		define( 'QLSTFT_PROMOTE_CROSS_INSTALL_2_LOGO_SRC', plugins_url( '/assets/backend/img/perfect-woocommerce-brands.jpg', QLSTFT_PLUGIN_FILE ) );
 
 		new \QuadLayers\WP_Notice_Plugin_Promote\Load(
@@ -47,7 +48,7 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 									'<br>'
 					),
 					'notice_link'        => QLSTFT_PROMOTE_REVIEW_URL,
-					'notice_more_link'   => QLSTFT_SUPPORT_URL,
+					'notice_more_link'   => 'https://quadlayers.com/account/support/?utm_source=qlstft_plugin&utm_medium=dashboard_notice&utm_campaign=support&utm_content=report_bug_button',
 					'notice_more_label'  => esc_html__(
 						'Report a bug',
 						'storefront-footer'
@@ -55,7 +56,7 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 				),
 				array(
 					'plugin_slug'        => QLSTFT_PROMOTE_PREMIUM_SELL_SLUG,
-					'plugin_install_link'   => QLSTFT_PROMOTE_PREMIUM_SELL_URL,
+					'plugin_install_link'   => QLSTFT_PROMOTE_PREMIUM_INSTALL_URL,
 					'plugin_install_label'  => esc_html__(
 						'Purchase Now',
 						'storefront-footer'
